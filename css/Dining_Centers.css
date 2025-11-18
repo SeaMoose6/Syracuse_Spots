@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+}
+
+header {
+  background: #004080;
+  color: #fff;
+  padding: 1rem;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav a {
+  color: #fff;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  color: #004080;
+  margin-bottom: 0.5rem;
+}
+
+section p {
+  margin: 0.3rem 0;
+}
+
+ul {
+  margin-top: 0.5rem;
+  padding-left: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  background: #004080;
+  color: #fff;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+section {
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  color: #004080;
+  margin-bottom: 0.5rem;
+}
+
+/* Image styling */
+section img {
+  display: block;
+  width: 100%;
+  max-width: 400px;   /* ensures all images are the same width */
+  height: 250px;      /* fixed height for consistency */
+  object-fit: cover;  /* crops/zooms to fill without distortion */
+  margin: 0.5rem 0 1rem;
+  border-radius: 4px;
+}
