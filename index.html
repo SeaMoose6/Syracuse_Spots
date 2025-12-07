@@ -1,60 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- Header section -->
-  <header>
-    <h1>Syracuse Spots</h1>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="./html/Dining_Centers.html">Dining Centers</a></li>
-        <li><a href="./html/Student_Centers.html">Student Centers</a></li>
-      </ul>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Website</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header section -->
+    <header>
+      <h1>Syracuse Spots</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="./html/Dining_Centers.html">Dining Centers</a></li>
+          <li><a href="./html/Student_Centers.html">Student Centers</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- Main content -->
-  <main>
-    <section id="home">
-      <h2>Home</h2>
-      <p>This is the homepage content.</p>
-    </section>
+    <!-- Main content -->
+    <main>
+      <section id="home">
+        <h2>Home</h2>
+        <p>This is the homepage content.</p>
+      </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>Welcome to the Syracuse Student Life Review Hub — a platform built by our team to help students share honest reviews of campus dining halls, dorms, and study spaces. Users can log in, browse feedback, and post their own ratings and comments. The site includes multiple pages, secure login, and a MySQL database to store reviews and user info.</p>
-    </section>
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          Welcome to the Syracuse Student Life Review Hub — a platform built by
+          our team to help students share honest reviews of campus dining halls,
+          dorms, and study spaces. Users can log in, browse feedback, and post
+          their own ratings and comments. The site includes multiple pages,
+          secure login, and a MySQL database to store reviews and user info.
+        </p>
+      </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <form>
-        <label for="Email">Email:</label>
-        <input type="text" id="name" name="name">
+      <section id="contact">
+        <h2>Contact</h2>
+        <form action="connect.php" method="post">
+          <label for="Email">Email:</label>
+          <input type="text" id="name" name="email" />
 
-        <label for="Username">Username:</label>
-        <input type="text" id="Username" name="name">
+          <label for="Username">Username:</label>
+          <input type="text" id="Username" name="name" />
 
-        <label for="password">Password:</label>
-        <textarea id="password" name="message"></textarea>
+          <label for="password">Password:</label>
+          <textarea id="password" name="password"></textarea>
 
-        <button type="submit">Sign Up</button>
-      </form>
-    </section>
-  </main>
+          <button type="submit">Sign Up</button>
+        </form>
+      </section>
+    </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 My Website. All rights reserved.</p>
-  </footer>
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
 
-  <!-- Optional JavaScript -->
-  <script src="script.js"></script>
-</body>
+    <!-- Optional JavaScript -->
+    <script src="script.js"></script>
+  </body>
 </html>
