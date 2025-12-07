@@ -1,0 +1,6 @@
+brockway=3
+ernie_davis=5
+graham=4
+orange=2
+sadler=4
+shaw=3
