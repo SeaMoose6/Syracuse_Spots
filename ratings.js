@@ -36,6 +36,11 @@
       span.textContent = '★';
       container.appendChild(span);
     }
+    // Add numeric rating text
+    const numSpan = document.createElement('span');
+    numSpan.className = 'rating-text';
+    numSpan.textContent = ` ${rating}/5`;
+    container.appendChild(numSpan);
     container.setAttribute('aria-label', `${rating} of ${max} stars`);
     container.title = `${rating} of ${max} stars`;
   }

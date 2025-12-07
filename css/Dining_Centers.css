@@ -63,20 +63,29 @@ main > p {
   font-size: 1.5rem;
   color: #ccc;
   margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 .rating .star {
   /* base styling for star glyphs */
-  margin-right: 0.1rem;
+  margin-right: 0.15rem;
+  display: inline-block;
 }
 
 .rating .star.filled { 
-  color: gold;
+  color: #ffc107;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .rating .star.empty { 
   color: #ddd;
+}
+
+.rating .rating-text {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
 }
 
 section {
