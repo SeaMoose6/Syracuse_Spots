@@ -1,40 +1,68 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
   color: #333;
   margin: 0;
 }
 
 header {
-  background: #004080;
+  background: linear-gradient(135deg, #004080 0%, #003560 100%);
   color: #fff;
-  padding: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 header h1 {
-  margin: 0;
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
 }
 
 nav a {
   color: #fff;
-  margin-right: 1rem;
   text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 main {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 2rem auto;
   padding: 0 1rem;
+}
+
+main > p {
+  text-align: center;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  color: #666;
+  font-style: italic;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .rating {
   display: inline-block;
   font-size: 1.5rem;
   color: #ccc;
+  margin-bottom: 1rem;
 }
 
 .rating .star {
@@ -42,60 +70,83 @@ main {
   margin-right: 0.1rem;
 }
 
-.rating .star.filled { color: gold; }
-.rating .star.empty { color: #ccc; }
+.rating .star.filled { 
+  color: gold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.rating .star.empty { 
+  color: #ddd;
+}
 
 section {
   background: #fff;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+section:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
 }
 
 section h2 {
   color: #004080;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border-bottom: 3px solid #d77921;
+  padding-bottom: 0.5rem;
 }
 
 section p {
-  margin: 0.3rem 0;
+  margin: 0.5rem 0;
+  color: #555;
+  line-height: 1.6;
 }
 
 ul {
-  margin-top: 0.5rem;
-  padding-left: 1.2rem;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+
+ul li {
+  padding: 0.4rem 0;
+  color: #555;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+ul li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #d77921;
+  font-weight: bold;
 }
 
 footer {
   text-align: center;
-  background: #004080;
+  background: linear-gradient(135deg, #004080 0%, #003560 100%);
   color: #fff;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-section {
-  background: #fff;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-section h2 {
-  color: #004080;
-  margin-bottom: 0.5rem;
+  padding: 2rem;
+  margin-top: 3rem;
+  font-weight: 500;
 }
 
 /* Two-column content row: image (left) + details (right) */
 .content-row {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   align-items: flex-start;
 }
 
 .left {
-  flex: 0 0 320px; /* fixed-ish image column */
+  flex: 0 0 300px; /* fixed-ish image column */
 }
 
 .left img {
@@ -104,7 +155,14 @@ section h2 {
   height: 240px;
   object-fit: cover;
   margin: 0;
-  border-radius: 4px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.left img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .right {
@@ -112,7 +170,32 @@ section h2 {
 }
 
 @media (max-width: 640px) {
-  .content-row { flex-direction: column; }
-  .left { flex: 0 0 auto; }
-  .left img { height: 200px; }
+  .content-row { 
+    flex-direction: column; 
+  }
+  
+  .left { 
+    flex: 0 0 auto; 
+  }
+  
+  .left img { 
+    height: 200px; 
+  }
+  
+  section {
+    padding: 1.5rem;
+  }
+  
+  section h2 {
+    font-size: 1.5rem;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
