@@ -1,6 +1,6 @@
-brockway=3
-ernie_davis=5
+brockway=2
+ernie_davis=3
 graham=4
-orange=2
-sadler=4
-shaw=3
+orange=3
+sadler=1
+shaw=2
