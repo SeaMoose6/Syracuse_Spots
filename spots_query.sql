@@ -16,7 +16,7 @@ password VARCHAR(100) NOT NULL
 CREATE TABLE spot_rating( 
 id INT,  
 spot_name VARCHAR(50), 
-rating INT,
+rating INT
 );
 
 CREATE TABLE reviews(
