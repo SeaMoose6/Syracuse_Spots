@@ -18,10 +18,19 @@
       const parts = line.split('=');
       if (parts.length !== 2) continue;
       const key = parts[0].trim();
-      const val = parseInt(parts[1].trim(), 10);
-      if (!Number.isFinite(val)) continue;
-      // clamp to 0..5
-      map[key] = Math.max(0, Math.min(5, val));
+      const ratingsStr = parts[1].trim();
+      
+      // Parse comma-separated ratings
+      const ratings = ratingsStr.split(',').map(r => {
+        const val = parseInt(r.trim(), 10);
+        return Number.isFinite(val) ? Math.max(0, Math.min(5, val)) : 0;
+      });
+      
+      // Calculate average and round to nearest 0.5
+      if (ratings.length > 0) {
+        const avg = ratings.reduce((sum, r) => sum + r, 0) / ratings.length;
+        map[key] = Math.round(avg * 2) / 2; // round to nearest 0.5
+      }
     }
     return map;
   }
@@ -29,20 +38,34 @@
   function renderStars(container, rating) {
     const max = 5;
     container.textContent = '';
-    // Use the same star glyph for filled and empty, and style via classes
+    
+    // Render stars with support for half-stars
     for (let i = 1; i <= max; i++) {
       const span = document.createElement('span');
-      span.className = i <= rating ? 'star filled' : 'star empty';
-      span.textContent = '★';
+      
+      // Determine if this star is filled, half-filled, or empty
+      if (i <= rating) {
+        span.className = 'star filled';
+        span.textContent = '★';
+      } else if (i - 0.5 <= rating) {
+        span.className = 'star half-filled';
+        span.textContent = '★';
+      } else {
+        span.className = 'star empty';
+        span.textContent = '★';
+      }
+      
       container.appendChild(span);
     }
+    
     // Add numeric rating text
     const numSpan = document.createElement('span');
     numSpan.className = 'rating-text';
-    numSpan.textContent = ` ${rating}/5`;
+    numSpan.textContent = ` ${rating.toFixed(1)}/5`;
     container.appendChild(numSpan);
+    
     container.setAttribute('aria-label', `${rating} of ${max} stars`);
-    container.title = `${rating} of ${max} stars`;
+    container.title = `${rating} of ${max} stars (average)`;
   }
 
   async function loadAndRender() {
