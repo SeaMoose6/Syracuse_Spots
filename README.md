@@ -88,12 +88,6 @@ Fill in actual credentials you have set up.
 
 ---
 
-Online Access |||||||MAKE EDITS||||||||
-If deployed online, provide the URL here.  
-Fill in GitHub Pages, Heroku, or other hosting link.
-
----
-
 Project Structure
 ```
 /html        -> Front-end pages (Dining, Student Center, etc.)
@@ -121,7 +115,6 @@ Known Issues and Limitations
 - Ratings currently stored in text or JSON files (not yet integrated with the database).  
 - Limited mobile responsiveness.  
 - Search and filter may not cover all categories.  
-
 
 
 ---
