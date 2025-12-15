@@ -104,7 +104,7 @@
     formData.append('rating', rating);
     formData.append('comment', comment);
 
-    fetch('../submit_review.php', {
+    fetch('../dining.php', {
       method: 'POST',
       body: formData
     })
