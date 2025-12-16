@@ -20,73 +20,41 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="hero-content">
-      <h2>Discover Campus Favorites</h2>
-      <p>Honest reviews from Syracuse students. Find the best dining, study spots, and more.</p>
-      <a href="#explore" class="cta-button">Explore Now</a>
-    </div>
-  </div>
-
   <!-- Main content -->
   <main>
-    <section id="explore" class="features">
-      <h2>What We Offer</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h3>🍽️ Dining Centers</h3>
-          <p>Rate and review dining halls on campus. See what other students think about food quality, hours, and atmosphere.</p>
-          <a href="./html/Dining_Centers.html" class="card-link">View Dining Centers →</a>
-        </div>
-        <div class="feature-card">
-          <h3>📚 Study Spaces</h3>
-          <p>Discover the best places to study across campus. Get reviews on quietness, wifi, and seating availability.</p>
-          <a href="./html/Student_Centers.html" class="card-link">View Study Spaces →</a>
-        </div>
-        <div class="feature-card">
-          <h3>⭐ Community Ratings</h3>
-          <p>Browse ratings from the Syracuse student community. Share your own experiences and help others make informed decisions.</p>
-          <a href="#signup" class="card-link">Join the Community →</a>
-        </div>
-      </div>
+    <section id="home">
+      <h2>Home</h2>
+      <p>This is the homepage content.</p>
     </section>
 
     <section id="about">
-      <h2>About Syracuse Spots</h2>
-      <p>Welcome to the Syracuse Student Life Review Hub — a platform built by students, for students. Share honest reviews of campus dining halls, dorms, study spaces, and more. Browse feedback from your peers, post your own ratings and comments, and help build a community of informed students. Our platform features secure login, user accounts, and a robust database to store your experiences and reviews.</p>
+      <h2>About</h2>
+      <p>Welcome to the Syracuse Student Life Review Hub — a platform built by our team to help students share honest reviews of campus dining halls, dorms, and study spaces. Users can log in, browse feedback, and post their own ratings and comments. The site includes multiple pages, secure login, and a MySQL database to store reviews and user info.</p>
     </section>
 
-    <section id="signup" class="signup-section">
-      <h2>Join the Community</h2>
-      <p>Sign up today and start sharing your reviews!</p>
-      <form action="community.php" method="post" class="signup-form">
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" required>
-        </div>
+    <section id="contact">
+      <h2>Contact</h2>
+      <form>
+        <label for="Email">Email:</label>
+        <input type="text" id="name" name="name">
 
-        <div class="form-group">
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="name" placeholder="Choose a username" required>
-        </div>
+        <label for="Username">Username:</label>
+        <input type="text" id="Username" name="name">
 
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" placeholder="Create a strong password" required>
-        </div>
+        <label for="password">Password:</label>
+        <textarea id="password" name="message"></textarea>
 
-        <button type="submit" class="submit-button">Create Account</button>
+        <button type="submit">Sign Up</button>
       </form>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 My Website. All rights reserved.</p>
-  </footer>
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
 
-  <!-- Optional JavaScript -->
-  <script src="script.js"></script>
-</body>
+    <!-- Optional JavaScript -->
+    <script src="script.js"></script>
+  </body>
 </html>
