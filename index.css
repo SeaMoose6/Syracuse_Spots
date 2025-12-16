@@ -274,3 +274,39 @@ footer {
     font-size: 1.5rem;
   }
 }
+
+/* Star Colors & Shapes */
+.rating .star {
+  font-size: 1.5rem;
+  margin-right: 2px;
+  display: inline-block;
+  color: #ccc; /* Default 'Empty' color (Light Grey) */
+}
+
+
+.rating .star.filled {
+  color: #f39c12; /* Syracuse Orange / Gold */
+}
+
+/* Half-star styling */
+.rating .star.half-filled {
+  position: relative;
+  color: #ccc; /* Background is empty */
+}
+
+.rating .star.half-filled::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  width: 50%; /* Only color half the star */
+  overflow: hidden;
+  color: #f39c12;
+}
+
+.rating-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  margin-left: 10px;
+  vertical-align: middle;
+}

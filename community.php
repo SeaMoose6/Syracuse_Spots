@@ -1,9 +1,9 @@
 <?php
-// signup for community and to write reviews
-
+// signup for community to write reviews
 //Database 
 include("database.php"); // connects to database
 
+// --- HANDLE POST (Joining Community Ratings) ---
 if($_SERVER["REQUEST_METHOD"] == "POST"){
    
     
@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // proceed if user enters all column parameters correctly
     else{
         
-        $hash = password_hash($password, PASSWORD_DEFAULT); // hash password to hacker protection if database in breached
+        $hash = password_hash($password, PASSWORD_DEFAULT); // hash password for hacker protection if database is breached
         $sql = "INSERT INTO sign_up (email,username,password)
                 VALUES('$email','$username','$hash')";
   

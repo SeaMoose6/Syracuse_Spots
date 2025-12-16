@@ -1,53 +1,28 @@
-// ratings.js
-// Fetches a simple key=value ratings file and renders stars into
-// elements with class "rating" and a `data-hall` attribute.
-
+/**
+ * ratings.js
+ * Fetches ratings and reviews from dining.php and renders them into the DOM.
+ */
 (function () {
   'use strict';
 
-  // Try a few relative paths so this works whether the page is in /html/
-  // or served from a different base.
-  const tryPaths = ['../ratings.txt', '/ratings.txt', 'ratings.txt'];
-
-  function parseRatings(text) {
-    const map = Object.create(null);
-    const lines = text.split(/\r?\n/);
-    for (const raw of lines) {
-      const line = raw.trim();
-      if (!line || line.startsWith('#')) continue;
-      const parts = line.split('=');
-      if (parts.length !== 2) continue;
-      const key = parts[0].trim();
-      const ratingsStr = parts[1].trim();
-      
-      // Parse comma-separated ratings
-      const ratings = ratingsStr.split(',').map(r => {
-        const val = parseInt(r.trim(), 10);
-        return Number.isFinite(val) ? Math.max(0, Math.min(5, val)) : 0;
-      });
-      
-      // Calculate average and round to nearest 0.5
-      if (ratings.length > 0) {
-        const avg = ratings.reduce((sum, r) => sum + r, 0) / ratings.length;
-        map[key] = Math.round(avg * 2) / 2; // round to nearest 0.5
-      }
-    }
-    return map;
-  }
-
+  /**
+   * Renders star icons based on a numeric rating (0-5).
+   * Supports filled, half-filled, and empty stars.
+   */
   function renderStars(container, rating) {
     const max = 5;
     container.textContent = '';
     
-    // Render stars with support for half-stars
+    // Support half-star rounding for visual display
+    const roundedRating = Math.round(rating * 2) / 2;
+
     for (let i = 1; i <= max; i++) {
       const span = document.createElement('span');
       
-      // Determine if this star is filled, half-filled, or empty
-      if (i <= rating) {
+      if (i <= roundedRating) {
         span.className = 'star filled';
         span.textContent = '★';
-      } else if (i - 0.5 <= rating) {
+      } else if (i - 0.5 <= roundedRating) {
         span.className = 'star half-filled';
         span.textContent = '★';
       } else {
@@ -68,34 +43,58 @@
     container.title = `${rating} of ${max} stars (average)`;
   }
 
+  /**
+   * Fetches JSON data from dining.php and updates the UI
+   */
   async function loadAndRender() {
-    let text = null;
-    for (const p of tryPaths) {
-      try {
-        const res = await fetch(p, { cache: 'no-cache' });
-        if (!res.ok) continue;
-        text = await res.text();
-        break;
-      } catch (e) {
-        // try next path
+    try {
+      // Fetch data from the PHP backend
+      const res = await fetch('../dining.php', { cache: 'no-cache' });
+      
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
       }
+
+      const ratingsData = await res.json();
+
+      // Find every element with a data-hall attribute
+      const els = document.querySelectorAll('.rating[data-hall]');
+      
+      els.forEach(el => {
+        const hall = (el.getAttribute('data-hall') || '').trim();
+        
+        // Get data for this hall, or use defaults if no data exists yet
+        const data = ratingsData[hall] || { avg: 0, reviews: [] };
+        
+        // 1. Render the stars
+        renderStars(el, parseFloat(data.avg));
+
+        // 2. Render the reviews/quotes
+        const quotesContainer = document.querySelector(`#quotes-${hall}`);
+        if (quotesContainer) {
+          // Clear any hardcoded placeholders
+          quotesContainer.innerHTML = ''; 
+          
+          if (data.reviews.length > 0) {
+            data.reviews.forEach(reviewText => {
+              const p = document.createElement('p');
+              p.className = 'quote';
+              p.textContent = `"${reviewText}"`;
+              quotesContainer.appendChild(p);
+            });
+          } else {
+            // Optional: placeholder if no reviews exist
+            quotesContainer.innerHTML = '<p class="quote"><em>No reviews yet. Be the first!</em></p>';
+          }
+        }
+      });
+
+    } catch (e) {
+      console.error('ratings.js: Error loading data from database', e);
     }
-
-    if (text == null) {
-      // nothing found — still try to render default 0s
-      console.warn('ratings.js: could not fetch ratings.txt from', tryPaths);
-    }
-
-    const ratings = text ? parseRatings(text) : {};
-
-    const els = document.querySelectorAll('.rating[data-hall]');
-    els.forEach(el => {
-      const hall = (el.getAttribute('data-hall') || '').trim();
-      const r = Number.isFinite(ratings[hall]) ? ratings[hall] : 0;
-      renderStars(el, r);
-    });
   }
 
+  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadAndRender);
   } else {
