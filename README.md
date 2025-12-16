@@ -8,10 +8,9 @@ The Syracuse Student Life Review Hub is a web application where students can log
 Prerequisites
 
 - Java Development Kit (JDK) 17 or higher
-- Apache Tomcat (or another servlet container)
+- XAMPP 
 - MySQL 8.0 or higher
 - HTML, CSS, and JavaScript for front-end
-- Optional: Node.js if client-side tooling is used
 
 
 ---
